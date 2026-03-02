@@ -2,97 +2,736 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haran Strategies || Digital Marketing</title>
-    <!-- Link to External CSS File -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Font Awesome CDN for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>HARAN STRATEGIES · global execution</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- RESET & BASE (mobile first) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f9ff;
+            color: #14273e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* responsive container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+
+        /* ----- HEADER (fully responsive) ----- */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 4px 16px rgba(0,20,40,0.04);
+            padding: 0.6rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            border-bottom: 2px solid #e2e9f9;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #0b2b5c, #1b4a8b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .logo span {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #2f5e9c;
+            -webkit-text-fill-color: #2f5e9c;
+            background: none;
+            margin-left: 0.2rem;
+        }
+
+        /* mobile-friendly navigation */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.6rem 1rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1e3a5f;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #1e4a7a;
+        }
+
+        /* ----- HERO (mobile first) ----- */
+        .hero {
+            background: linear-gradient(145deg, #0b1f33, #17345c);
+            color: white;
+            padding: 3rem 0 3.5rem;
+            border-bottom: 4px solid #4f82c0;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 10vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .hero h1 i {
+            color: #fcc45c;
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            margin-right: 6px;
+        }
+
+        .hero .subhead {
+            font-size: clamp(1.1rem, 4vw, 1.6rem);
+            background: rgba(0,0,0,0.25);
+            border-left: 5px solid #ffc857;
+            padding: 1rem 1.2rem;
+            border-radius: 0 60px 60px 0;
+            backdrop-filter: blur(4px);
+            max-width: 100%;
+        }
+
+        .hero-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+            width: 100%;
+        }
+
+        .hero-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255,255,255,0.12);
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 100%;
+            max-width: 340px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .hero-contact-item i {
+            font-size: 1.4rem;
+            color: #ffc857;
+            min-width: 28px;
+        }
+
+        /* ----- COUNTING STATS (responsive grid) ----- */
+        .stats-panel {
+            background: white;
+            border-radius: 40px;
+            padding: 2rem 1.2rem;
+            margin: -2rem 0 2rem;
+            box-shadow: 0 18px 32px -12px rgba(0,32,64,0.18);
+            border: 1px solid #ccdfff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 2rem 1rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(2.2rem, 8vw, 3.2rem);
+            font-weight: 800;
+            color: #0a2c53;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4e6f98;
+            border-bottom: 2px dotted #b5c9ec;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+        .stat-icon {
+            font-size: 1.8rem;
+            color: #315f97;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ----- PRESENCE (10 countries) mobile ----- */
+        .presence {
+            background: #e5effb;
+            border-radius: 50px;
+            padding: 1.5rem 1.5rem;
+            margin: 2rem 0 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+            border: 1px solid #b7cfee;
+        }
+        .presence span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #153e6f;
+        }
+        .country-tag {
+            background: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #143a62;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* ----- service pills (scrollable on mobile) ----- */
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+            margin: 2.5rem 0 2rem;
+        }
+        .service-pill {
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid #cddefa;
+            color: #1d3e68;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .service-pill i {
+            font-size: 1rem;
+        }
+        .service-pill:hover {
+            background: #0b2b4f;
+            color: white;
+            border-color: #0b2b4f;
+            transform: scale(1.02);
+        }
+        .service-pill:hover i {
+            color: white;
+        }
+
+        /* headings */
+        .cards-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1.5rem;
+            color: #0a2b51;
+            border-left: 6px solid #306cbc;
+            padding-left: 1rem;
+            line-height: 1.2;
+        }
+
+        /* ----- card grids (mobile -> desktop) ----- */
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .travel-subgrid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card, .why-card, .travel-subcard {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 12px 28px -8px rgba(15, 40, 70, 0.08);
+            border: 1px solid #dde5f2;
+            transition: 0.15s;
+        }
+        .card:hover, .why-card:hover, .travel-subcard:hover {
+            border-color: #5982bb;
+            box-shadow: 0 18px 32px -10px #1e3f6b33;
+        }
+
+        .why-card {
+            border-left: 6px solid #1e4a7a;
+        }
+
+        .travel-subcard {
+            background: #f6faff;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #2a5f9c;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3, .why-card h3, .travel-subcard h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #002856;
+            margin-bottom: 0.7rem;
+        }
+        
+        .travel-subcard h4 {
+            font-size: 1.6rem;
+        }
+
+        .btn-outline {
+            border: 2px solid #adc3e2;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1a3b63;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-outline:hover {
+            background: #1a3b63;
+            color: white;
+            border-color: #1a3b63;
+        }
+
+        /* IT section */
+        .it-showcase {
+            background: white;
+            border-radius: 40px;
+            padding: 2rem 1.5rem;
+            margin: 2.5rem 0;
+            border: 2px solid #e1ebfc;
+        }
+        .it-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1.5rem 0;
+        }
+        .it-tags span {
+            background: #e0edff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* footer */
+        footer {
+            background: #0b1f36;
+            color: #ccdcf0;
+            padding: 2.5rem 0;
+            border-radius: 40px 40px 0 0;
+            margin-top: 3rem;
+        }
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        .footer-copy {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .footer-copy i {
+            margin-right: 0.3rem;
+        }
+
+        /* page anchors */
+        .page-marker {
+            scroll-margin-top: 80px;
+        }
+
+        /* tablet and desktop overrides */
+        @media (min-width: 600px) {
+            .container { padding: 0 2rem; }
+            .nav-wrapper { flex-wrap: nowrap; }
+            .logo { font-size: 2rem; }
+            .nav-links a { font-size: 0.95rem; }
+            .hero-contact { flex-direction: row; flex-wrap: wrap; }
+            .hero-contact-item { width: auto; max-width: none; }
+            .presence { flex-direction: row; justify-content: space-between; text-align: left; }
+            .service-cards { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .travel-subgrid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 900px) {
+            .service-cards { grid-template-columns: repeat(3, 1fr); }
+            .why-grid { grid-template-columns: repeat(3, 1fr); }
+            .travel-subgrid { grid-template-columns: repeat(4, 1fr); }
+            .footer-grid { flex-direction: row; justify-content: space-between; }
+        }
+
+        @media (min-width: 1100px) {
+            .service-cards { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* minor touches */
+        .fa-star, .fa-crown { color: #f5b342; margin-right: 8px; }
+        
+        /* fix for IT cards section */
+        .it-cards-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        @media (min-width: 600px) {
+            .it-cards-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 900px) {
+            .it-cards-section {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header Section (Taskbar) -->
-    <header>
-        <div class="logo">
-            <h1>Haran Strategies</h1>
-        </div>
-        <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <!-- Hamburger Icon -->
-        <div class="hamburger" id="hamburger-menu">
-            <i class="fas fa-bars"></i>
-        </div>
-    </header>
-
-    <!-- Hero Section (Banner) -->
-    <section class="hero">
-        <h2>Empowering Your Business Through Digital Marketing</h2>
-        <p>Drive growth and success with tailored marketing strategies</p>
-        <a href="main.html"><button>Get Started</button></a>
-    </section>
-
-    <!-- About Us Section -->
-    <section id="about" class="about-us">
-        <div class="container">
-            <div class="about-content">
-                <h1 class="title">Who We Are</h1>
-                <p class="subtitle">
-                    At Haran Strategies, we’re passionate about driving brands to success in the digital age.  
-                    With a focus on strategy, creativity, and results, we help businesses stand out and thrive.
-                </p>
-                <p>
-                    Our expertise spans across SEO, social media, paid advertising, content creation, and more.  
-                    We tailor every solution to your unique goals, blending data-driven insights with a people-first approach.
-                </p>
-                <a href="main.html" class="cta-button">Let’s Work Together</a>
+    <!-- ===== HEADER with professional page names (mobile supported) ===== -->
+    <div class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">HARAN STRATEGIES <span>L.L.C</span></div>
+            <div class="nav-links">
+                <a href="#home">HOME</a>
+                <a href="#why-choose">WHY US</a>
+                <a href="#domains">DOMAINS</a>
+                <a href="#travel-hub">TRAVEL</a>
+                <a href="#it">IT</a>
+                <a href="#contact">CONTACT</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <i class="fas fa-search"></i>
-                <h3>SEO Optimization</h3>
-                <p>Enhance your website's visibility and reach the top of search results with our SEO services.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-share-alt"></i>
-                <h3>Social Media Marketing</h3>
-                <p>Engage your audience on platforms like Facebook, Instagram, and LinkedIn.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Web Development</h3>
-                <p>Build a responsive, user-friendly website that represents your business.</p>
+    <!-- ===== HERO (HOME) ===== -->
+    <div class="hero" id="home">
+        <div class="container hero-content">
+            <h1><i class="fas fa-globe"></i> beyond strategies, global execution.</h1>
+            <div class="subhead">Web · Software · Digital Marketing · IT teaching · Amazon · Visa · Travels · Umrah · Immigration · Business setup</div>
+            <div class="hero-contact">
+                <div class="hero-contact-item"><i class="fas fa-envelope"></i> info@haranstrategies.com</div>
+                <div class="hero-contact-item"><i class="fas fa-phone-alt"></i> +971 50 135 3427</div>
+                <div class="hero-contact-item"><i class="fas fa-map-pin"></i> 10 countries</div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>Have questions or want to work with us? We'd love to hear from you!</p>
-        <form action="https://formsubmit.co/haranstrategies@gmail.com" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" name="MSG" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+    <!-- ===== COUNTING INTERFACE (stats) ===== -->
+    <div class="container">
+        <div class="stats-panel">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="stat-number" data-target="12400">12,400+</div>
+                    <div class="stat-label">successful clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" data-target="870">870+</div>
+                    <div class="stat-label">employees</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-flag"></i></div>
+                    <div class="stat-number" data-target="10">10</div>
+                    <div class="stat-label">countries</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="stat-number" data-target="3650">3,650+</div>
+                    <div class="stat-label">projects delivered</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Haran Strategies. All rights reserved.</p>
+    <!-- ===== 10 countries presence (mobile friendly) ===== -->
+    <div class="container">
+        <div class="presence">
+            <span><i class="fas fa-map-pin"></i> operating in 10 countries</span>
+            <div class="country-tag">UAE · Saudi · Qatar · UK · USA · India · Egypt · Turkey · Malaysia · Canada</div>
+        </div>
+    </div>
+
+    <!-- ===== WHY CHOOSE US (multiple pages style) ===== -->
+    <div class="container" id="why-choose">
+        <div class="cards-heading"><i class="fas fa-star"></i> WHY CHOOSE HARAN STRATEGIES</div>
+    </div>
+    <div class="container why-grid">
+        <div class="why-card"><i class="fas fa-medal card-icon"></i><h3>12+ years</h3><p>Proven track record in 10 countries. Local laws, global mindset.</p></div>
+        <div class="why-card"><i class="fas fa-headset card-icon"></i><h3>24/7 support</h3><p>Personal account manager – day or night, we're here.</p></div>
+        <div class="why-card"><i class="fas fa-check-double card-icon"></i><h3>98% visa success</h3><p>High‑accuracy handling for visas, immigration, travel.</p></div>
+        <div class="why-card"><i class="fas fa-rocket card-icon"></i><h3>fast-track IT</h3><p>Agile teams, DevOps. Web/software delivered fast.</p></div>
+        <div class="why-card"><i class="fas fa-hand-holding-heart card-icon"></i><h3>ethical & transparent</h3><p>No hidden fees. Clear contracts. Your success is our KPI.</p></div>
+        <div class="why-card"><i class="fas fa-globe card-icon"></i><h3>local presence</h3><p>Offices in UAE, UK, USA, India, Malaysia – we act globally.</p></div>
+    </div>
+
+    <!-- ===== SERVICE PILLS (quick nav) ===== -->
+    <div class="container service-grid" id="domains">
+        <a href="#amazon-page" class="service-pill"><i class="fab fa-amazon"></i> Amazon</a>
+        <a href="#visa-page" class="service-pill"><i class="fas fa-passport"></i> Visa</a>
+        <a href="#travel-page" class="service-pill"><i class="fas fa-plane"></i> Travels</a>
+        <a href="#umrah-page" class="service-pill"><i class="fas fa-kaaba"></i> Umrah</a>
+        <a href="#immigration-page" class="service-pill"><i class="fas fa-people-arrows"></i> Immigration</a>
+        <a href="#business-page" class="service-pill"><i class="fas fa-chart-line"></i> Business</a>
+        <a href="#it" class="service-pill"><i class="fas fa-laptop-code"></i> IT</a>
+    </div>
+
+    <!-- ===== MAIN DOMAINS PAGES (each card = a dedicated page) ===== -->
+    <div class="container">
+        <div class="cards-heading"><i class="fas fa-crown"></i> OUR SPECIALISED DOMAINS</div>
+    </div>
+    <div class="container service-cards">
+        <div class="card page-marker" id="amazon-page">
+            <div class="card-icon"><i class="fab fa-amazon"></i></div>
+            <h3>AMAZON SELLING</h3>
+            <p>Full management, PPC, wholesale. 700+ sellers scaled.</p>
+            <div class="btn-outline">amazon page →</div>
+        </div>
+        <div class="card page-marker" id="visa-page">
+            <div class="card-icon"><i class="fas fa-passport"></i></div>
+            <h3>VISA SERVICES</h3>
+            <p>Business, tourist, work. Express for 30+ countries.</p>
+            <div class="btn-outline">visa page →</div>
+        </div>
+        <div class="card page-marker" id="travel-page">
+            <div class="card-icon"><i class="fas fa-suitcase-rolling"></i></div>
+            <h3>TRAVELS SERVICES</h3>
+            <p>Flight, hotel, tours. All-in travels package experts.</p>
+            <div class="btn-outline">travel page →</div>
+        </div>
+        <div class="card page-marker" id="umrah-page">
+            <div class="card-icon"><i class="fas fa-mosque"></i></div>
+            <h3>UMRAH PACKAGE</h3>
+            <p>Visa, 5* hotels, transport, guides. Group/individual.</p>
+            <div class="btn-outline">umrah page →</div>
+        </div>
+        <div class="card page-marker" id="immigration-page">
+            <div class="card-icon"><i class="fas fa-people-arrows"></i></div>
+            <h3>IMMIGRATION HANDLING</h3>
+            <p>PR, study permits, investor visas. Licensed counsellors.</p>
+            <div class="btn-outline">immigration →</div>
+        </div>
+        <div class="card page-marker" id="business-page">
+            <div class="card-icon"><i class="fas fa-store-alt"></i></div>
+            <h3>NEW BUSINESS STARTING</h3>
+            <p>Company formation, PRO, legal. From startup to expansion.</p>
+            <div class="btn-outline">start business →</div>
+        </div>
+    </div>
+
+    <!-- ===== TRAVEL HUB – multiple pages ===== -->
+    <div class="container" id="travel-hub">
+        <div style="background:#ffffff; border-radius:48px; padding:2rem 1.5rem; margin:2rem 0;">
+            <h2 style="font-size:2rem; margin-bottom:2rem;"><i class="fas fa-globe-asia" style="color:#1f4d87;"></i> TRAVEL & MIGRATION HUB</h2>
+            <div class="travel-subgrid">
+                <div class="travel-subcard">
+                    <i class="fas fa-umbrella-beach" style="font-size:2.5rem; color:#2f62a1;"></i>
+                    <h4>ALL IN TRAVELS</h4>
+                    <p>Flights, hotels, tours, transfers, visa. One price.</p>
+                    <div class="btn-outline">view package →</div>
+                </div>
+                <div class="travel-subcard">
+                    <i class="fas fa-stamp" style="font-size:2.5rem; color:#2f62a1;"></i>
+                    <h4>VISA HANDLING</h4>
+                    <p>40+ countries, tourist/business. Stress‑free.</p>
+                    <div class="btn-outline">visa handling →</div>
+                </div>
+                <div class="travel-subcard">
+                    <i class="fas fa-kaaba" style="font-size:2.5rem; color:#2f62a1;"></i>
+                    <h4>UMRAH PACKAGES</h4>
+                    <p>Economy to VIP, 5* hotels, guided ziyarat.</p>
+                    <div class="btn-outline">umrah package →</div>
+                </div>
+                <div class="travel-subcard">
+                    <i class="fas fa-people-arrows" style="font-size:2.5rem; color:#2f62a1;"></i>
+                    <h4>IMMIGRATION</h4>
+                    <p>PR Canada/UK/EU, study permits, investors.</p>
+                    <div class="btn-outline">immigration →</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== IT SERVICES (most advanced) ===== -->
+    <div class="container" id="it">
+        <div class="it-showcase">
+            <h2><i class="fas fa-microchip"></i> IT SERVICES – THE MOST ADVANCED</h2>
+            <div class="it-tags">
+                <span>web developing</span>
+                <span>software developing</span>
+                <span>digital marketing</span>
+                <span>IT teaching</span>
+                <span>cyber security</span>
+                <span>cloud</span>
+                <span>AI & automation</span>
+            </div>
+            <p style="margin-top:1.5rem; font-size:1.1rem;">350+ developers, data scientists & strategists. Trusted by enterprises.</p>
+        </div>
+    </div>
+
+    <!-- additional IT cards (fixed responsive grid) -->
+    <div class="container">
+        <div class="it-cards-section">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h3>WEB DEVELOPING</h3>
+                <p>Custom platforms, e-commerce, portals. 600+ live.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-cubes"></i></div>
+                <h3>SOFTWARE DEV</h3>
+                <p>SaaS, mobile, ERP, AI integration. Agile teams.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>DIGITAL MARKETING</h3>
+                <p>SEO, ads, content, branding. Data-driven.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3>IT TEACHING</h3>
+                <p>Coding, data science, cybersecurity. 5000+ trained.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- extra successful people block -->
+    <div class="container">
+        <div style="background: linear-gradient(145deg,#e2efff, white); border-radius: 50px; padding: 2rem; margin: 3rem auto;">
+            <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                <i class="fas fa-smile-beam" style="font-size: 3.5rem; color: #1f4d87;"></i>
+                <div><strong style="font-size: 1.8rem;">12,400+ successful passed people</strong> <span style="font-size:1.2rem;">(immigration, Umrah, Amazon, IT)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER / CONTACT PAGE ===== -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div>
+                <h3 style="color:white;">HARAN STRATEGIES L.L.C</h3>
+                <p class="footer-copy"><i class="fas fa-map-marker-alt"></i> Dubai · London · New York · Istanbul · Riyadh · Kuala Lumpur · Cairo · Doha · Mumbai · Toronto</p>
+                <p class="footer-copy"><i class="fas fa-envelope"></i> info@haranstrategies.com | <i class="fas fa-phone-alt"></i> +971 50 135 3427</p>
+                <p class="footer-copy">© 2025 – strategies without borders</p>
+            </div>
+            <div>
+                <p><i class="fas fa-clock"></i> 24/7 client support</p>
+                <p><i class="fas fa-shield-alt"></i> trusted by 12k+ clients</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script> <!-- Link to External JavaScript File -->
+    <!-- counting animation and smooth scroll -->
+    <script>
+        (function() {
+            // Counting animation for stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(el => {
+                const targetText = el.getAttribute('data-target') || el.innerText.replace(/\D/g,'');
+                let target = parseInt(targetText.replace(/,/g,''), 10);
+                if (isNaN(target)) target = 1000;
+                let current = 0;
+                const inc = Math.ceil(target / 60);
+                const updateNumber = () => {
+                    current += inc;
+                    if (current >= target) {
+                        el.innerText = (target).toLocaleString() + '+';
+                        return;
+                    }
+                    el.innerText = current.toLocaleString() + '+';
+                    requestAnimationFrame(updateNumber);
+                };
+                updateNumber();
+            });
+
+            // Smooth scroll for navigation
+            document.querySelectorAll('.nav-links a, .service-pill, .btn-outline').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetEl = document.querySelector(href);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+
+            // Add click handlers for "read more" buttons to show alerts (just for demo)
+            document.querySelectorAll('.btn-outline').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const text = this.closest('.card, .travel-subcard, .why-card')?.querySelector('h3, h4')?.innerText || 'page';
+                    alert(`You're being redirected to the ${text} page. (Demo navigation)`);
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
